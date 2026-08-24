@@ -1,6 +1,6 @@
 <?php
 
-$database_info = include __DIR__ . './../config/database.php';
+$database_info = include __DIR__ . '/../config/database.php';
 
 try {
 
@@ -15,3 +15,5 @@ try {
 } catch (Exception $e) {
     echo "Connection failed: " . $e->getMessage();
 }
+
+include __DIR__ . "/helper.php";
