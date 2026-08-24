@@ -144,3 +144,49 @@ if (!function_exists('db_delete')) {
         }
     }
 }
+
+/**
+ * select_all function
+ * 
+ * @param string $tableName
+ * @return array|bool
+ */
+if (!function_exists('select_all')) {
+    function select_all($tableName) {
+        global $connect;
+        $query = "SELECT * FROM $tableName";
+        $result = mysqli_query($connect, $query);
+        if (mysqli_num_rows($result) > 0) {
+            return mysqli_fetch_all($result, MYSQLI_ASSOC);
+        } else {
+            $error = "Error: " . $query . " | MySQL Error: " . mysqli_error($connect);
+            app_log($error, 'error');
+            echo $error . "<br>";
+            return false;
+        }
+    }
+}
+
+/**
+ * find function
+ * 
+ * @param string $tableName
+ * @param int $id
+ * @return array|bool
+ */
+if (!function_exists('find')) {
+    function find($tableName, $id) {
+        global $connect;
+        $query = "SELECT * FROM $tableName WHERE id = $id";
+        $result = mysqli_query($connect, $query);
+        if (mysqli_num_rows($result) > 0) {
+            return mysqli_fetch_assoc($result);
+        } else {
+            $error = "Error: " . $query . " | MySQL Error: " . mysqli_error($connect);
+            app_log($error, 'error');
+            echo $error . "<br>";
+            return false;
+        }
+    }
+}
+
