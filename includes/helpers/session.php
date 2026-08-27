@@ -7,14 +7,16 @@ if(!function_exists('session')) {
 }
 
 if(!function_exists('get_session')) {
-    function get_session(string $key) {
-        return $_SESSION[$key];
+    function get_session(string $key, $default = null) {
+        return $_SESSION[$key] ?? $default;
     }
 }
 
 if(!function_exists('delete_session')) {
     function delete_session(string $key) {
-        session_unset($key);
+        if (isset($_SESSION[$key])) {
+            unset($_SESSION[$key]);
+        }
     }
 }
 
