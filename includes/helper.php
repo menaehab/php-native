@@ -233,3 +233,19 @@ if (!function_exists('where'))
     }
 }
 
+if (!function_exists("paginate"))
+{
+    function paginate($tableName, $perPage = 10, $pageq = 1)
+    {
+        global $connect;
+        $query = "SELECT * FROM $tableName";
+        $result = mysqli_query($connect, $query);
+        $total = mysqli_num_rows($result);
+        $pages = ceil($total / $perPage);
+        $current = isset($_GET['page']) ? $_GET['page'] : 1;
+        $start = ($current - 1) * $perPage;
+        $query = "SELECT * FROM $tableName LIMIT $start, $perPage";
+        $result = mysqli_query($connect, $query);
+        return mysqli_fetch_all($result, MYSQLI_ASSOC);
+    }
+}
