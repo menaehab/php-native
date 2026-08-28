@@ -4,6 +4,7 @@ $helpers = [
     'db',
     'session',
     'debug',
+    'mail',
 ];
 
 foreach ($helpers as $helper) {
