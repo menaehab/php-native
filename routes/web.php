@@ -1,3 +1,5 @@
 <?php
 
-echo $_SERVER['REQUEST_URI'];
+route_get('/', function() {
+    echo "Hello World";
+});
