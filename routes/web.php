@@ -1,5 +1,5 @@
 <?php
 
 route_get('/', function() {
-    echo "Hello World";
+    return view('index');
 });

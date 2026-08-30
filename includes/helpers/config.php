@@ -9,3 +9,9 @@ if (!function_exists('config')) {
         }
     }
 }
+
+if (!function_exists('base_path')) {
+    function base_path(string $path) {
+        return getcwd() . '/' . $path;
+    }
+}
