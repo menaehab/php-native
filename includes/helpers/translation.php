@@ -15,7 +15,7 @@ if (!function_exists('trans')) {
             $language_file = $path . '/' . $locale . '/' . $file . '.php';
             if (file_exists($language_file)) {
                 $translations = include $language_file;
-                return $translations[$translation_key] ?? $key;
+                return $translations[$translation_key] ?? $default;
             }
         }
 
@@ -23,10 +23,10 @@ if (!function_exists('trans')) {
             $language_file = $path . '/' . $fallback . '/' . $file . '.php';
             if (file_exists($language_file)) {
                 $translations = include $language_file;
-                return $translations[$translation_key] ?? $key;
+                return $translations[$translation_key] ?? $default;
             }
         }
 
-        return $key;
+        return $default;
     }
 }

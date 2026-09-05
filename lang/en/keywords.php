@@ -1,5 +1,11 @@
 <?php
 
 return [
-    'welcome' => 'Welcome'
+    'welcome' => 'Welcome',
+    'home' => 'Home',
+    'dashboard' => 'Dashboard',
+    'language' => 'Language',
+    'arabic' => 'Arabic',
+    'english' => 'English',
+    'appName' => 'App',
 ];

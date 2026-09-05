@@ -39,7 +39,7 @@ if (!function_exists('segment')) {
 
 if (!function_exists('url')) {
     function url(string $path) {
-        return config('app.url') . '/' . $path;
+        return config('app.url') . '/' . trim($path, '/');
     }
 }
 
