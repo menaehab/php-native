@@ -6,7 +6,8 @@ $helpers = [
     'debug',
     'mail',
     'routing',
-    'view'
+    'view',
+    'translation'
 ];
 
 foreach ($helpers as $helper) {

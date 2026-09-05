@@ -6,8 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello world!</h1>
+    <h1><?= trans('keywords.welcome') ?></h1>
 
-    <button onclick="location.href='<?php echo url('dashboard'); ?>'">Dashboard</button>
+    <button onclick="location.href='<?php echo url('dashboard'); ?>'"><?= trans('keywords.dashboard') ?></button>
 </body>
 </html>
