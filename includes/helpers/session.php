@@ -6,6 +6,12 @@ if(!function_exists('session')) {
     }
 }
 
+if(!function_exists('set_session')) {
+    function set_session(string $key, $value) {
+        $_SESSION[$key] = $value;
+    }
+}
+
 if(!function_exists('get_session')) {
     function get_session(string $key, $default = null) {
         return $_SESSION[$key] ?? $default;

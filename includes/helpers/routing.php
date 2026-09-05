@@ -32,8 +32,8 @@ if (!function_exists('route_delete')) {
 
 if (!function_exists('segment')) {
     function segment() {
-        $uri = '/' . trim($_SERVER['REQUEST_URI'], '/');
-        return $uri;
+        $uri = trim($_SERVER['REQUEST_URI'], '/');
+        return $uri === '' ? '/' : $uri;
     }
 }
 
