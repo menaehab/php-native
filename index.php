@@ -10,4 +10,3 @@ require_once __DIR__ . '/routes/web.php';
 include __DIR__ . "/includes/exception_error.php";
 
 mysqli_close($connect);
-ob_end_flush();

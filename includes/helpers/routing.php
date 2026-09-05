@@ -36,3 +36,16 @@ if (!function_exists('segment')) {
         return $uri;
     }
 }
+
+if (!function_exists('url')) {
+    function url(string $path) {
+        return config('app.url') . '/' . $path;
+    }
+}
+
+if (!function_exists('redirect')) {
+    function redirect(string $path) {
+        header('Location: ' . url($path));
+        exit;
+    }
+}
