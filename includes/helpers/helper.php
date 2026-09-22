@@ -2,12 +2,13 @@
 $helpers = [
     'config',
     'db',
+    'AES',
     'session',
     'debug',
     'mail',
     'routing',
     'view',
-    'translation'
+    'translation',
 ];
 
 foreach ($helpers as $helper) {
