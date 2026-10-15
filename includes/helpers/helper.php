@@ -9,6 +9,8 @@ $helpers = [
     'routing',
     'view',
     'translation',
+    'storage',
+    'validations',
 ];
 
 foreach ($helpers as $helper) {

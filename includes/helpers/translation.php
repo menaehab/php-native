@@ -1,7 +1,12 @@
 <?php
 
 if (!function_exists('trans')) {
-    function trans(string $key = null, $default = null) {
+    function trans(string $key = null, $replace = [], $default = null) {
+        // Backward compat: trans('key', 'default') or trans('key', ['attr' => 'x'])
+        if (!is_array($replace)) {
+            $default = $replace;
+            $replace = [];
+        }
         $path = config('lang.path');
         $locale = get_session('lang') ?? config('lang.default');
         $supported_languages = config('lang.supports') ?? [];
@@ -15,7 +20,8 @@ if (!function_exists('trans')) {
             $language_file = $path . '/' . $locale . '/' . $file . '.php';
             if (file_exists($language_file)) {
                 $translations = include $language_file;
-                return $translations[$translation_key] ?? $default;
+                $message = $translations[$translation_key] ?? $default;
+                return replace_placeholders($message, $replace);
             }
         }
 
@@ -23,10 +29,23 @@ if (!function_exists('trans')) {
             $language_file = $path . '/' . $fallback . '/' . $file . '.php';
             if (file_exists($language_file)) {
                 $translations = include $language_file;
-                return $translations[$translation_key] ?? $default;
+                $message = $translations[$translation_key] ?? $default;
+                return replace_placeholders($message, $replace);
             }
         }
 
-        return $default;
+        return replace_placeholders($default, $replace);
+    }
+}
+
+if (!function_exists('replace_placeholders')) {
+    function replace_placeholders($message, array $replace = []) {
+        if (!is_string($message) || empty($replace)) {
+            return $message;
+        }
+        foreach ($replace as $placeholder => $value) {
+            $message = str_replace(':' . $placeholder, (string) $value, $message);
+        }
+        return $message;
     }
 }
