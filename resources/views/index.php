@@ -8,10 +8,10 @@
     <?php validate('numeric', '123', ['numeric']); ?>
     <?php validate('string', 'hello', ['string']); ?>
     <?php validate('boolean', 'true', ['boolean']); ?>
-    <?php if (!empty($validations)): ?>
+    <?php if (!empty(get_session('validations'))): ?>
         <div class="alert alert-danger mt-3">
             <ul>
-                <?php foreach ($validations as $attribute => $message): ?>
+                <?php foreach (get_session('validations') as $attribute => $message): ?>
                     <li><?= $message ?></li>
                 <?php endforeach; ?>
             </ul>
